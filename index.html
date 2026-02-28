@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pour Shay ❤️</title>
+
+<style>
+body {
+margin: 0;
+background: radial-gradient(circle at center, #1a001f, black);
+color: white;
+font-family: Arial, sans-serif;
+text-align: center;
+overflow: hidden;
+}
+
+#intro {
+margin-top: 40vh;
+font-size: 28px;
+animation: fadeIn 3s;
+}
+
+button {
+margin-top: 25px;
+padding: 15px 40px;
+border: none;
+border-radius: 50px;
+background: linear-gradient(45deg, #ff2e63, #ff6b81);
+color: white;
+font-size: 18px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+button:hover {
+transform: scale(1.1);
+}
+
+#content {
+display: none;
+padding-top: 12vh;
+}
+
+#message {
+font-size: 22px;
+width: 80%;
+margin: auto;
+min-height: 140px;
+line-height: 1.6;
+}
+
+#counter {
+margin-top: 25px;
+font-size: 20px;
+}
+
+#final {
+font-size: 50px;
+margin-top: 40px;
+opacity: 0;
+transition: opacity 3s;
+}
+
+.heart {
+position: absolute;
+color: #ff4d6d;
+animation: float 6s linear infinite;
+}
+
+@keyframes float {
+0% { transform: translateY(100vh); opacity: 1; }
+100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+J’ai quelque chose d’important à te dire…
+<br>
+<button onclick="startLove()">Clique ici Shay ❤️</button>
+</div>
+
+<div id="content">
+<div id="message"></div>
+<div id="counter"></div>
+<div id="final">JE T’AIME SHAY ❤️🥰</div>
+</div>
+
+<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+<script>
+
+let text = "Depuis le 23 octobre 2025, ma vie a changé. \
+Ce jour-là, j’ai rencontré une fille incroyable. \
+Une fille qui illumine mes journées. \
+Une fille qui apaise mon cœur. \
+Tu es mon sourire quand je vais mal. \
+Tu es ma paix quand tout est chaotique. \
+Chaque moment avec toi est précieux. \
+Et aujourd’hui je veux que le monde entier sache une chose...";
+
+let i = 0;
+
+function startLove() {
+document.getElementById("intro").style.display = "none";
+document.getElementById("content").style.display = "block";
+document.getElementById("music").play();
+typeWriter();
+startHearts();
+startCounter();
+}
+
+function typeWriter() {
+if (i < text.length) {
+document.getElementById("message").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter, 35);
+} else {
+document.getElementById("final").style.opacity = 1;
+}
+}
+
+function startHearts() {
+setInterval(() => {
+let heart = document.createElement("div");
+heart.className = "heart";
+heart.innerHTML = "❤️";
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.fontSize = Math.random() * 30 + 15 + "px";
+document.body.appendChild(heart);
+setTimeout(() => heart.remove(), 6000);
+}, 250);
+}
+
+function startCounter() {
+let startDate = new Date("2025-10-23");
+let counter = document.getElementById("counter");
+
+setInterval(() => {
+let now = new Date();
+let diff = now - startDate;
+let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+counter.innerHTML = "Je t’aime depuis " + days + " jours ❤️";
+}, 1000);
+}
+
+</script>
+
+</body>
+</html>
