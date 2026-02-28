@@ -38,7 +38,7 @@ transform: scale(1.1);
 
 #content {
 display: none;
-padding-top: 12vh;
+padding-top: 10vh;
 }
 
 #message {
@@ -59,6 +59,12 @@ font-size: 50px;
 margin-top: 40px;
 opacity: 0;
 transition: opacity 3s;
+text-shadow: 0 0 20px #ff4d6d;
+}
+
+#spotify {
+margin-top: 30px;
+display: none;
 }
 
 .heart {
@@ -91,9 +97,16 @@ J’ai quelque chose d’important à te dire…
 <div id="message"></div>
 <div id="counter"></div>
 <div id="final">JE T’AIME SHAY ❤️🥰</div>
+
+<div id="spotify">
+<iframe style="border-radius:12px;" 
+src="https://open.spotify.com/embed/track/3Puo8WtwFbxv7SIXnLZ9gP?utm_source=generator" 
+width="80%" height="80" frameBorder="0" 
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
 </div>
 
-<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+</div>
 
 <script>
 
@@ -111,7 +124,6 @@ let i = 0;
 function startLove() {
 document.getElementById("intro").style.display = "none";
 document.getElementById("content").style.display = "block";
-document.getElementById("music").play();
 typeWriter();
 startHearts();
 startCounter();
@@ -124,6 +136,7 @@ i++;
 setTimeout(typeWriter, 35);
 } else {
 document.getElementById("final").style.opacity = 1;
+document.getElementById("spotify").style.display = "block";
 }
 }
 
